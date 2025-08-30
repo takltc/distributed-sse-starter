@@ -1,9 +1,6 @@
 # Server-Sent Events Configuration
 takltc:
   sse:
-    # Whether to enable SSE functionality
-    enabled: true
-    
     # Connection configuration
     connection:
       # SSE connection timeout (milliseconds)
@@ -12,8 +9,6 @@ takltc:
       heartbeat: 30000
       # Maximum number of connections
       max-connections: 1000
-      # SSE connection path
-      path: /sse
     
     # Redis configuration (for cluster support)
     redis:
@@ -25,21 +20,13 @@ takltc:
       connection-ttl: 3600
       # Broadcast channel name
       channel: "sse:events"
-      # Node information TTL (seconds)
-      node-ttl: 300
-      # Redis Lua script execution timeout (milliseconds)
-      script-timeout: 5000
     
     # Lua script configuration
     script:
-      # Script file path prefix
-      script-path-prefix: lua/
       # Lua script retry count
       retry-count: 3
       # Lua script retry interval (milliseconds)
       retry-interval: 100
-      # Lua script execution timeout (milliseconds)
-      script-timeout: 5000
       # Whether to enable script caching
       script-cache-enabled: true
     
@@ -60,8 +47,6 @@ takltc:
       lua-script-retry-count: 3
       # Lua script retry interval (milliseconds)
       lua-script-retry-interval: 100
-      # Redis operation timeout (milliseconds)
-      redis-operation-timeout: 3000
       # Whether to enable atomicity assurance for connection registration
       connection-registration-atomic: true
       # Whether to enable atomicity assurance for connection unregistration
@@ -75,10 +60,6 @@ takltc:
       enabled: true
       # Connection state check interval (milliseconds)
       status-check-interval: 30000
-      # Connection state synchronization timeout (milliseconds)
-      status-sync-timeout: 5000
-      # Maximum state synchronization retry count
-      max-status-sync-retries: 3
       # Handling strategy when inconsistent (fail_fast|auto_correct)
       inconsistency-handling-strategy: auto_correct
       # Whether to enable inter-node connection state synchronization
@@ -94,8 +75,6 @@ takltc:
       cleanup-retry-count: 3
       # Resource recycling failure retry interval (milliseconds)
       cleanup-retry-interval: 1000
-      # Cleanup operation timeout (milliseconds)
-      cleanup-timeout: 10000
       # Whether to enable graceful shutdown
       graceful-shutdown: true
       # Graceful shutdown timeout (milliseconds)
