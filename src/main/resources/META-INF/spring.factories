@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  me.ud.ltc.tak.distributed.sse.starter.config.SseAutoConfiguration, \
+  me.ud.ltc.tak.distributed.sse.starter.config.NodeNameConfiguration
