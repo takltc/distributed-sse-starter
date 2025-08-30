@@ -90,32 +90,88 @@ All configuration properties are prefixed with `takltc.sse`:
 ```yaml
 takltc:
   sse:
-    enabled: true
+    # Connection configuration
     connection:
+      # SSE connection timeout (milliseconds)
       timeout: 30000
+      # Heartbeat interval (milliseconds)
       heartbeat: 30000
+      # Maximum number of connections
       max-connections: 1000
+    
+    # Redis configuration (for cluster support)
     redis:
+      # Whether to enable Redis support
       enabled: true
+      # Redis key prefix
       prefix: "sse:"
+      # Connection TTL (seconds)
       connection-ttl: 3600
+      # Broadcast channel name
       channel: "sse:events"
+    
+    # Lua script configuration
+    script:
+      # Lua script retry count
+      retry-count: 3
+      # Lua script retry interval (milliseconds)
+      retry-interval: 100
+      # Whether to enable script caching
+      script-cache-enabled: true
+    
+    # Cleanup configuration
     cleanup:
+      # Whether to enable cleanup functionality
       enabled: true
+      # Cleanup interval (milliseconds)
       interval: 60000
+      # Connection TTL (milliseconds)
       connection-ttl: 3600000
+    
+    # Atomic operation configuration
     atomic-operation:
+      # Whether to enable Redis atomic operations
       redis-atomic-enabled: true
+      # Lua script retry count
       lua-script-retry-count: 3
+      # Lua script retry interval (milliseconds)
       lua-script-retry-interval: 100
+      # Whether to enable atomicity assurance for connection registration
+      connection-registration-atomic: true
+      # Whether to enable atomicity assurance for connection unregistration
+      connection-unregistration-atomic: true
+      # Whether to enable atomicity assurance for expired connection cleanup
+      expired-connection-cleanup-atomic: true
+    
+    # Connection state consistency assurance configuration
     consistency:
+      # Whether to enable connection state consistency assurance
       enabled: true
+      # Connection state check interval (milliseconds)
       status-check-interval: 30000
-      inconsistency-handling-strategy: "auto_correct"
+      # Handling strategy when inconsistent (fail_fast|auto_correct)
+      inconsistency-handling-strategy: auto_correct
+      # Whether to enable inter-node connection state synchronization
+      inter-node-sync-enabled: true
+      # Connection route information validation interval (milliseconds)
+      route-validation-interval: 60000
+    
+    # Resource recycling reliability configuration
     reliability:
+      # Whether to enable resource recycling reliability assurance
+      enabled: true
+      # Resource recycling failure retry count
       cleanup-retry-count: 3
+      # Resource recycling failure retry interval (milliseconds)
+      cleanup-retry-interval: 1000
+      # Whether to enable graceful shutdown
       graceful-shutdown: true
+      # Graceful shutdown timeout (milliseconds)
+      graceful-shutdown-timeout: 30000
+      # Whether to enable resource leak detection
       resource-leak-detection: true
+      # Resource leak detection interval (milliseconds)
+      leak-detection-interval: 300000
 ```
 
 ## Usage
